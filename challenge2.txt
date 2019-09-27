@@ -1,0 +1,44 @@
+SmartPay 
+Challenge 2 of 4
+Get The Bill
+Write all Javascript strictly in ES6 syntax. This means use arrow functions instead of the function keyword. Declare variables and functions with const or let. Use const by default, and only use let if you are sure you need to re-assign values to the said variable. Use the Selector API instead of the getElementBy... or getElementsBy... APIs.
+
+Install the JSON Viewer Chrome extension, open a new tab and go to this API endpoint. You will be making HTTP requests to the API, so spend some time looking at the structure of the response data.
+
+Step 1
+Within the SCRIPT element and just after the billHype function, create an appState variable and assign it an empty Object literal. This variable will hold data for the app.
+
+Create a formatAsMoney function. It should take in an amount and a buyerCountry parameter. It will use these parameters to format the user's bill as a proper currency.
+
+Create detectCardType, validateCardExpiryDate, and validateCardHolderName functions. detectCardType should be declared to accept first4Digits as a parameter. As implied by their names, these functions will play major roles in validating various aspects of the card being used for payment
+
+Create a uiCanInteract function. It will be called to setup the UI, including adding event handlers to enable interactions with the app.
+
+Create a displayCartTotal function. It should expect a parameter and should use object de-structuring to obtain the results property of the given parameter. This function will be called with the data from an API call and it will display the total bill to be paid.
+
+Step 2
+Update the fetchBill function. It should then use the browser's fetch function to make a HTTP request to apiEndpoint. Using an arrow function in a .then call to the fetch function, return the response after converting it to JSON. Using another .then call to the first one, pass the JSON data to displayCartTotal. Make sure to handle errors that may occur, e.g by showing a warning message in the console.
+
+Call the fetchBill function from inside the startApp. This should be the only code or function call within startApp.
+
+Step 3
+In the body of the displayCartTotal function, de-structure the first item in the results array parameter into a data variable. Next, use object de-structuring to obtain the itemsInCart and buyerCountry properties from data. You might want to install the JSONViewer Chrome extension, open a new tab and navigate to https://randomapi.com/api/006b08a801d82d0c9824dcfdfdfa3b3c to see the shape of the JSON data we are dealing with.
+
+Next, displayCartTotal should set appState.items to itemsInCart and appState.country to buyerCountry.
+
+Use the Array .reduce function to calculate the total bill from itemsInCart Note that each item has a qty property indicating how many of that item the user bought. Assign the calculated bill to appState.bill
+
+Go back to the formatAsMoney function. Use the in-built javascript .toLocaleString function on the amount and buyerCountry parameters to format amount as a currency with the currency symbol of buyerCountry. The countries and their currency symbols are in the countries array you got in your starter code. If the buyerCountry is not in countries, then use United States as the country and format the currency accordingly.
+
+Continuing from where you left off in displayCartTotal, use the formatAsMoney function to set appState.billFormatted to the formatted total bill. The already assigned appState.bill and appState.country should be handy for this task!
+
+Set the text content of the data-bill SPAN element to the formatted bill saved in appState.billFormatted
+
+Assign an array literal to appState.cardDigits
+
+Finally, call uiCanInteract to wrap up displayCartTotal
+
+Run your app (click the play button) and see if the correct total bill is displayed in the UI with the right currency format. Next, we will allow input and interaction so that users can provide payment information.
+
+Deadline: In 68 Hours
+none

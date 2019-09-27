@@ -1,0 +1,26 @@
+Challenge 3 of 4
+Handle Simple Validation
+Step 1
+Create a flagIfInvalid function just after formatAsMoney function. This function is used to mark an input entry as invalid (strike-though) nor not. It should take a field and isValid parameters. If isValid is true, it should remove the is-invalid class from field, otherwise it should add it to field.
+
+Just after flagIfInvalid function, create a expiryDateFormatIsValid function which takes a field parameter representing the card's expiry date field. It should return true if the field's value complies with the MM/YY format, otherwise it should return false.
+
+With the above utility functions out of the way, go back to the validateCardExpiryDate function. This function should return true if the value provided matches the MM/YY format (hint: delegate to expiryDateFormatIsValid) AND if the date is in the future. In either case, it should use the flagIfInvalid function to mark the field as valid or not. It then has to return true or false depending on if the validation requirements are met or not.
+
+Now to the validateCardHolderName function. Recall that its placeholder already suggests the required format, which is Name Surname (2 names separated by space). Each name should be at least 3 characters long. It should use the flagIfInvalid function to mark the field as valid or not and then return true or false depending on if the validation requirements are met or not.
+
+Step 2
+Create validateCardNumber and validatePayment functions above the uiCanInteract function.
+
+In validatePayment, call validateCardNumber, validateCardHolderName, and validateCardExpiryDate functions in that order.
+
+After that, create a acceptCardNumbers function with event and fieldIndex as parameters.
+
+In the uiCanInteract function, give input focus to the first credit card number input field, then set validatePayment as the click event listener for the data-pay-btn BUTTON. Finally, end the uiCanInteract function (for now) by calling the billHype function
+
+Try filling in the card holer's name and expiry date into the UI then click the Pay Now BUTTON to see if the details are correctly marked as invalid or not.
+
+Try clicking on the shopping cart icon or the displayed total bill. Do you hear someone hyping how much you are about to pay?
+
+Deadline: In 51 Hours
+validateCardExpiryDate
